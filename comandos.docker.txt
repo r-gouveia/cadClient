@@ -1,0 +1,10 @@
+docker run --name my-postgres --network=my-network -p 5433:5432 -e POSTGRES_PASSWORD=postgres -d postgres
+
+
+
+
+
+#PGADMIN_CONTAINER
+docker run --name pdadmin4 --network=my-network -p 15432:80 -e PGADMIN_DEFAULT_EMAIL=rgouveiaconsultoria
+@hotmail.com -e PGADMIN_DEFAULT_PASSWORD=postgres -d dpage/pgadmin4
+
