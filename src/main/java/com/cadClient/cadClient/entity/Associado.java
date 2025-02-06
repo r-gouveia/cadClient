@@ -1,29 +1,28 @@
 package com.cadClient.cadClient.entity;
 
 import jakarta.persistence.*;
-
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
 @Entity
-@Table(name = "associado")
+@Table(name = "associados")
 public class Associado {
 
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
 
-    private Carro placa;
     private String nome;
-    private String idade;
+    private Integer idade;
     private String endereco;
-    private LocalDate data_nascimento;
-    @OneToMany
-    private List<Carro> carro = new ArrayList<>();
+    private LocalDate dataNascimento;
 
-    public Associado(){}
+    @OneToMany(mappedBy = "associado", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Carro> carros = new ArrayList<>();
+
+    public Associado() {}
 
     public UUID getId() {
         return id;
@@ -41,11 +40,11 @@ public class Associado {
         this.nome = nome;
     }
 
-    public String getIdade() {
+    public Integer getIdade() {
         return idade;
     }
 
-    public void setIdade(String idade) {
+    public void setIdade(Integer idade) {
         this.idade = idade;
     }
 
@@ -57,27 +56,19 @@ public class Associado {
         this.endereco = endereco;
     }
 
-    public LocalDate getData_nascimento() {
-        return data_nascimento;
+    public LocalDate getDataNascimento() {
+        return dataNascimento;
     }
 
-    public void setData_nascimento(LocalDate data_nascimento) {
-        this.data_nascimento = data_nascimento;
+    public void setDataNascimento(LocalDate dataNascimento) {
+        this.dataNascimento = dataNascimento;
     }
 
-    public List<Carro> getCarro() {
-        return carro;
+    public List<Carro> getCarros() {
+        return carros;
     }
 
-    public void setCarro(List<Carro> carro) {
-        this.carro = carro;
-    }
-
-    public Carro getPlaca() {
-        return placa;
-    }
-
-    public void setPlaca(Carro placa) {
-        this.placa = placa;
+    public void setCarros(List<Carro> carros) {
+        this.carros = carros;
     }
 }

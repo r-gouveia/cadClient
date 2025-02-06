@@ -14,6 +14,8 @@ public class Carro {
     private String cor;
     private String placa;
     private int ano;
+
+    @Enumerated(EnumType.STRING)
     private Montadora montadora;
 
     @ManyToOne
@@ -67,5 +69,13 @@ public class Carro {
 
     public void setMontadora(Montadora montadora) {
         this.montadora = montadora;
+    }
+
+    public Associado getAssociado() {
+        return associado;
+    }
+
+    public void setAssociado(Associado associado) {
+        this.associado = associado;
     }
 }
